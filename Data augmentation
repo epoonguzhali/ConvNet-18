@@ -1,1 +1,46 @@
+% Augmentation using Rotation (Glaucoma images)
+D='E:\poonguzhali\Rimone2Train\glaucoma'
+S = dir(fullfile(D,'*.jpg')); % pattern to match filenames.
+ i = 1;
+for k = 1:numel(S)
+k
+    F = fullfile(D,S(k).name);
+    In=imread(F);
+    
+     %
+     [m,n,d] = size(In);
+        for j = 0:1:4
+        I1=imrotate(In,j);
+          
+        I1 = imresize(I1,[m,n]);
 
+  imwrite(I1, strcat('E:\poonguzhali\Rimone2Training\glaucoma\',num2str(i,'%d'),'_rgl.jpg')); 
+  
+ i  =i+1;
+        end
+end 
+cd('E:\poonguzhali\Rimone2Train\glaucoma');
+
+
+D='E:\poonguzhali\Rimone2Test\glaucoma'
+S = dir(fullfile(D,'*.jpg')); 
+ i = 1;
+
+for k = 1:numel(S)
+k
+    F = fullfile(D,S(k).name);
+    In=imread(F);
+    
+     %
+     [m,n,d] = size(In);
+        for j = 0:1:4
+        I1=imrotate(In,j);
+          
+        I1 = imresize(I1,[m,n]);
+
+  imwrite(I1, strcat('E:\poonguzhali\Rimone2Testing\glaucoma\',num2str(i,'%d'),'_rgl.jpg')); 
+  
+ i  =i+1;
+        end
+end 
+cd('E:\poonguzhali\Rimone2Test\glaucoma');
